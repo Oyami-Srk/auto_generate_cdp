@@ -30,6 +30,9 @@ pub fn init() {
             compile_cdp_json("./browser_protocol.json", CDP_COMMIT);
 
         writeln!(file, "// Auto-generated from ChromeDevTools/devtools-protocol at commit {}", CDP_COMMIT).unwrap();
+        writeln!(file, "#[allow(unused)]").unwrap();
+        writeln!(file, "#[allow(non_camel_case_types)]").unwrap();
+        writeln!(file, "#[allow(non_snake_case)]").unwrap();
 
         let modv = quote! {
             pub mod cdp {
